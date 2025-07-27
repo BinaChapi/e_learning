@@ -1,0 +1,42 @@
+.touchable-opacity {
+  background: none;
+  border: none;
+  padding: 14px;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.touchable-opacity::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: currentColor;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: inherit;
+}
+
+.touchable-opacity:hover {
+  transform: translateY(-2px);
+}
+
+.touchable-opacity:hover::before {
+  opacity: 0.05;
+}
+
+.touchable-opacity:active {
+  transform: translateY(1px);
+}
+
+.touchable-opacity:active::before {
+  opacity: 0.1;
+}
