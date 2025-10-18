@@ -1,29 +1,31 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const chapterQuizSchema = new mongoose.Schema({
   quizId: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   chapterId: {
     type: String,
     required: true,
-    ref: 'Chapter'
+    ref: "Chapter",
   },
   question: {
     type: String,
-    required: true
+    required: true,
   },
-  options: [{
-    type: String,
-    required: true
-  }],
+  options: [
+    {
+      type: String,
+      required: true,
+    },
+  ],
   correctAnswer: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 });
 
-const ChapterQuiz = mongoose.model('ChapterQuiz', chapterQuizSchema);
-module.exports = ChapterQuiz;
+const ChapterQuiz = mongoose.model("ChapterQuiz", chapterQuizSchema);
+export default ChapterQuiz;

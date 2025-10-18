@@ -1,30 +1,30 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const enrollmentSchema = new mongoose.Schema({
   enrollmentId: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   userId: {
     type: String,
     required: true,
-    ref: 'User'
+    ref: "User",
   },
   courseId: {
     type: String,
     required: true,
-    ref: 'Course'
+    ref: "Course",
   },
   enrollmentDate: {
     type: Date,
-    default: Date.now
+    default: Date.now,
   },
   progress: {
     type: Number,
-    default: 0
-  }
+    default: 0,
+  },
 });
 
-const Enrollment = mongoose.model('Enrollment', enrollmentSchema);
-module.exports = Enrollment;
+const Enrollment = mongoose.model("Enrollment", enrollmentSchema);
+export default Enrollment;

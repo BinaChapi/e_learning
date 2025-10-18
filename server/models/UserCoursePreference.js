@@ -1,22 +1,25 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const userCoursePreferenceSchema = new mongoose.Schema({
   preferenceId: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   userId: {
     type: String,
     required: true,
-    ref: 'User'
+    ref: "User",
   },
   courseId: {
     type: String,
     required: true,
-    ref: 'Course'
-  }
+    ref: "Course",
+  },
 });
 
-const UserCoursePreference = mongoose.model('UserCoursePreference', userCoursePreferenceSchema);
-module.exports = UserCoursePreference;
+const UserCoursePreference = mongoose.model(
+  "UserCoursePreference",
+  userCoursePreferenceSchema
+);
+export default UserCoursePreference;

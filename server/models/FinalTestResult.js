@@ -1,30 +1,33 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const finalTestResultSchema = new mongoose.Schema({
   resultId: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   testId: {
     type: String,
     required: true,
-    ref: 'FinalTest'
+    ref: "FinalTest",
   },
   userId: {
     type: String,
     required: true,
-    ref: 'User'
+    ref: "User",
   },
   score: {
     type: Number,
-    required: true
+    required: true,
   },
   attemptDate: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-const FinalTestResult = mongoose.model('FinalTestResult', finalTestResultSchema);
-module.exports = FinalTestResult;
+const FinalTestResult = mongoose.model(
+  "FinalTestResult",
+  finalTestResultSchema
+);
+export default FinalTestResult;

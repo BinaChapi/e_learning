@@ -1,26 +1,26 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const courseLikeSchema = new mongoose.Schema({
   likeId: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   userId: {
     type: String,
     required: true,
-    ref: 'User'
+    ref: "User",
   },
   courseId: {
     type: String,
     required: true,
-    ref: 'Course'
+    ref: "Course",
   },
   likedAt: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-const CourseLike = mongoose.model('CourseLike', courseLikeSchema);
-module.exports = CourseLike;
+const CourseLike = mongoose.model("CourseLike", courseLikeSchema);
+export default CourseLike;

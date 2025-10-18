@@ -1,26 +1,29 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const completedCourseSchema = new mongoose.Schema({
   completionId: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   userId: {
     type: String,
     required: true,
-    ref: 'User'
+    ref: "User",
   },
   courseId: {
     type: String,
     required: true,
-    ref: 'Course'
+    ref: "Course",
   },
   completionDate: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-const CompletedCourse = mongoose.model('CompletedCourse', completedCourseSchema);
-module.exports = CompletedCourse;
+const CompletedCourse = mongoose.model(
+  "CompletedCourse",
+  completedCourseSchema
+);
+export default CompletedCourse;

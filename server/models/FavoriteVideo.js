@@ -1,26 +1,26 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const favoriteVideoSchema = new mongoose.Schema({
   favoriteId: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   userId: {
     type: String,
     required: true,
-    ref: 'User'
+    ref: "User",
   },
   videoId: {
     type: String,
     required: true,
-    ref: 'Video'
+    ref: "Video",
   },
   favoritedAt: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-const FavoriteVideo = mongoose.model('FavoriteVideo', favoriteVideoSchema);
-module.exports = FavoriteVideo;
+const FavoriteVideo = mongoose.model("FavoriteVideo", favoriteVideoSchema);
+export default FavoriteVideo;

@@ -1,7 +1,7 @@
-const express = require('express');
+import express from "express";
 const router = express.Router();
-const Video = require('../models/Video');
-const upload = require('../middleware/cloudinaryUploader');
+import Video from "../models/Video.js";
+import upload from "../middleware/cloudinaryUploader.js";
 
 // POST: Upload a video
 router.post("/", upload.single("videoFile"), async (req, res) => {
@@ -31,32 +31,33 @@ router.post("/", upload.single("videoFile"), async (req, res) => {
   }
 });
 
-
 // GET: Videos by chapter
-router.get('/chapter/:chapterId', async (req, res) => {
+router.get("/chapter/:chapterId", async (req, res) => {
   try {
     const videos = await Video.find({ chapterId: req.params.chapterId });
     res.json(videos);
   } catch (err) {
-    res.status(500).json({ error: 'Failed to fetch videos' });
+    res.status(500).json({ error: "Failed to fetch videos" });
   }
 });
 
 // DELETE: Delete video by ID
-router.delete('/:id', async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const video = await Video.findById(req.params.id);
-    if (!video) return res.status(404).json({ error: 'Video not found' });
+    if (!video) return res.status(404).json({ error: "Video not found" });
 
     // Delete from Cloudinary
     const cloudinary = require("../utils/cloudinary");
-    await cloudinary.uploader.destroy(video.publicId, { resource_type: "video" });
+    await cloudinary.uploader.destroy(video.publicId, {
+      resource_type: "video",
+    });
 
     await Video.findByIdAndDelete(req.params.id);
-    res.json({ message: 'Video deleted successfully' });
+    res.json({ message: "Video deleted successfully" });
   } catch (err) {
-    res.status(500).json({ error: 'Failed to delete video' });
+    res.status(500).json({ error: "Failed to delete video" });
   }
 });
 
-module.exports = router;
+export default router;

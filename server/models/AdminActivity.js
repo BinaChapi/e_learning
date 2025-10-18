@@ -1,33 +1,37 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const adminActivitySchema = new mongoose.Schema({
   activityId: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   adminId: {
     type: String,
     required: true,
-    ref: 'User'
+    ref: "User",
   },
   action: {
     type: String,
-    required: true
+    required: true,
   },
   entityId: {
     type: String,
-    required: true
+    required: true,
   },
   entityType: {
     type: String,
-    required: true
+    required: true,
   },
   timestamp: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-const AdminActivity = mongoose.model('AdminActivity', adminActivitySchema ,'AdminActivity');
-module.exports = AdminActivity;
+const AdminActivity = mongoose.model(
+  "AdminActivity",
+  adminActivitySchema,
+  "AdminActivity"
+);
+export default AdminActivity;

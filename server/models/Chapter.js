@@ -1,10 +1,13 @@
 // server/models/Chapter.js
-const mongoose = require("mongoose");
-
+import mongoose from "mongoose";
 const chapterSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  courseId: { type: mongoose.Schema.Types.ObjectId, ref: "Course", required: true },
+  courseId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Course",
+    required: true,
+  },
   grade: { type: String, required: true },
 });
 
-module.exports = mongoose.model("Chapter", chapterSchema);
+export default mongoose.model("Chapter", chapterSchema);
